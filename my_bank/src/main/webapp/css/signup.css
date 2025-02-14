@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    background-color: #e3f2fd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.heading {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #0277bd;
+    font-weight: 600;
+}
+
+.input {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: border-color 0.3s;
+}
+
+.input:focus {
+    border-color: #0277bd;
+    outline: none;
+}
+
+select.input {
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="%230277bd" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>') no-repeat right 15px center;
+    background-color: #fff;
+    background-size: 20px;
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    background-color: #0277bd;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 15px;
+}
+
+.login-button:hover {
+    background-color: #01579b;
+}
+
+.forgot-password a {
+    color: #0288d1;
+    text-decoration: none;
+    font-size: 0.9em;
+    display: block;
+    margin-top: 10px;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+p.input {
+    color: red;
+    background-color: #ffe5e5;
+    border: 1px solid red;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+input[type='file']::file-selector-button {
+    background-color: #0277bd;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type='file']::file-selector-button:hover {
+    background-color: #01579b;
+}
