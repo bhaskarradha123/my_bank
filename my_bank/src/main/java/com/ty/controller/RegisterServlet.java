@@ -19,12 +19,12 @@ import com.ty.dto.User;
 public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String fname = req.getParameter("firstname");
-        String lname = req.getParameter("lastname");
+        String fname = req.getParameter("firstName");
+        String lname = req.getParameter("lastName");
         String address = req.getParameter("address");
         String gender = req.getParameter("gender");
         String email = req.getParameter("email");
-        String pwd = req.getParameter("pwd");
+        String pwd = req.getParameter("password");
         int age = Integer.parseInt(req.getParameter("age"));
         long phone = Long.parseLong(req.getParameter("phone"));
         
