@@ -99,15 +99,20 @@ public class UserDao {
 		return ps1.executeUpdate();
 
 	}
-	
-	public int updateProfile(User udto) throws Exception
-	{
-		PreparedStatement ps=con().prepareStatement("update user set image=? where email=?");
+
+	public int updateProfile(User udto) throws Exception {
+		PreparedStatement ps = con().prepareStatement("update user set image=? where email=?");
 		ps.setString(1, udto.getImage());
 		ps.setString(2, udto.getEmail());
-		
-		
-		
+
+		return ps.executeUpdate();
+	}
+
+	public int deleteProfile(User udto) throws Exception {
+		PreparedStatement ps = con().prepareStatement("delete from user where email=? and pwd =?");
+		ps.setString(2, udto.getPassword());
+		ps.setString(1, udto.getEmail());
+
 		return ps.executeUpdate();
 	}
 
