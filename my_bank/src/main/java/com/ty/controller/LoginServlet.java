@@ -31,8 +31,9 @@ public class LoginServlet  extends HttpServlet{
 			if(result.equals("success"))
 			{
 				HttpSession hs=req.getSession();
-				User loginData=udao.fetchprofileByEmail(email);
-				hs.setAttribute("loginData", loginData);
+				User loginData=udao.fetchProfileByEmail(email);
+				
+				hs.setAttribute("loginEmail", email);
 				RequestDispatcher rd=req.getRequestDispatcher("dashboard.jsp");
 				rd.forward(req, resp);
 			}
