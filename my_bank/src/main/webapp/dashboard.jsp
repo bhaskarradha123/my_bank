@@ -18,6 +18,7 @@
 <a href="balance.jsp"><button>CHECKBALANCE</button></a>
 <a href="transfer.jsp"><button>MONEY TRANSFER</button></a>
 <a href="transactions.jsp"><button>SHOW TRANSACTIONS</button></a>
+<a href="account.jsp"><button>ADD ACCOUNT</button></a>
 
 
 
