@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<form action="createAccount" method="post">
+<form action="createAccount" >
 <input type="submit" value="ADDACCOUNT">
 </form>
 </body>
