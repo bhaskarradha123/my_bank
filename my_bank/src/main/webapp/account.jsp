@@ -34,6 +34,12 @@
         <option value="Savings">Savings</option>
         <option value="Current">Current</option>
     </select>
+    
+    <label for="bankName">BankName:</label>
+    <select id="bankName" name="bankName" required>
+        <option value="INDIAN">Indian</option>
+        <option value="SBI">SBI</option>
+    </select>
 
        <label for="pin">PIN (4 digits):</label>
     <input type="password" id="pin" name="pin" pattern="\d{4}" title="PIN must be exactly 4 digits" required>

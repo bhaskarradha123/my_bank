@@ -15,7 +15,7 @@
 <a href="delete.jsp"><button>DELETE</button></a>
 <a href="profile.jsp"><button>PROFILE</button></a>
 <a href="logout"><button>LOGOUT</button></a>
-<a href="balance.jsp"><button>CHECKBALANCE</button></a>
+<a href="checkBalannce.jsp"><button>CHECKBALANCE</button></a>
 <a href="transfer.jsp"><button>MONEY TRANSFER</button></a>
 <a href="transactions.jsp"><button>SHOW TRANSACTIONS</button></a>
 <a href="account.jsp"><button>ADD ACCOUNT</button></a>
