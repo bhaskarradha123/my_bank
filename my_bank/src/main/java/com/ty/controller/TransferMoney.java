@@ -15,6 +15,7 @@ import com.ty.dao.BankAccountDao;
 import com.ty.dao.TransactionsDao;
 import com.ty.dto.BankAccount;
 import com.ty.dto.Transaction;
+import com.ty.enums.TransactionMode;
 
 @WebServlet("/numberTransfer")
 public class TransferMoney extends HttpServlet {
@@ -30,7 +31,6 @@ public class TransferMoney extends HttpServlet {
 		int pin=Integer.parseInt(request.getParameter("pin"));
 		String remark = "money transfer to mobile number";
 		double amount = Double.parseDouble(amountStr);
-		String status = "PENDING";
 		BigDecimal transferAmount = new BigDecimal(amount);
 
 		BankAccountDao dao = new BankAccountDao();
@@ -42,7 +42,7 @@ public class TransferMoney extends HttpServlet {
 				if (presentdata.getBalance() > 0) {
 					if (recieverStatus) {
 
-						transactionDao.transferMoney(senderAccount, receiverPhone, amount, remark);
+						transactionDao.transferMoney( new Transaction(senderAccount, receiverPhone, transferAmount, remark,"PHONE"));
 						request.setAttribute("status", "Successfull");
 
 					} else

@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import com.ty.dto.Transaction;
+
 public class TransactionsDao {
 
 	public Connection con() throws Exception {
@@ -20,7 +22,7 @@ public class TransactionsDao {
 	
 
 
-	    public void transferMoney(long senderAccount, long receiverPhoneNum, double amount, String remarks) {
+	    public void transferMoney(Transaction t) {
 	        Connection conn = null;
 	        PreparedStatement deductStmt = null;
 	        PreparedStatement creditStmt = null;
@@ -33,23 +35,27 @@ public class TransactionsDao {
 
 	            String deductQuery = "UPDATE bank SET balance = balance - ? WHERE accNum = ? ";
 	            deductStmt = conn.prepareStatement(deductQuery);
-	            deductStmt.setDouble(1, amount);
-	            deductStmt.setLong(2, senderAccount);
+	            deductStmt.setBigDecimal(1, t.getAmount());
+	            deductStmt.setLong(2, t.getSenderAccountNumber());
 	            int senderUpdate = deductStmt.executeUpdate();
-
+                   
 	            String creditQuery = "UPDATE bank SET balance = balance + ? WHERE phoneNum = ?";
 	            creditStmt = conn.prepareStatement(creditQuery);
-	            creditStmt.setDouble(1, amount);
-	            creditStmt.setLong(2, receiverPhoneNum);
+	            creditStmt.setBigDecimal(1, t.getAmount());
+	            creditStmt.setLong(2, t.getReceiverPhoneNumber());
 	            int receiverUpdate = creditStmt.executeUpdate();
 
 
-	            String transactionQuery = "INSERT INTO transactions (sender_account_number, receiver_phone_number, amount, transaction_type, transaction_mode, status, remarks) VALUES (?, ?, ?, 'PHONE', 'DEBIT', 'SUCCESS', ?)";
+	            String transactionQuery = "INSERT INTO transactions (sender_account_number,receiver_account_number, receiver_phone_number, amount, transaction_type, transaction_mode, status, remarks) VALUES (?, ?, ?, ?, 'DEBIT',?, 'SUCCESS', ?)";
 	            transactionStmt = conn.prepareStatement(transactionQuery);
-	            transactionStmt.setLong(1, senderAccount);
-	            transactionStmt.setLong(2, receiverPhoneNum);
-	            transactionStmt.setDouble(3, amount);
-	            transactionStmt.setString(4, remarks);
+	            transactionStmt.setLong(1, t.getSenderAccountNumber());
+	            transactionStmt.setLong(2, t.getReceiverAccountNumber());
+
+	            transactionStmt.setLong(3, t.getReceiverPhoneNumber());
+	            transactionStmt.setBigDecimal(4, t.getAmount());
+	            transactionStmt.setString(5, t.getTransactionMode());
+                  System.out.println(t.getTransactionMode());
+	            transactionStmt.setString(6, t.getRemarks());
 	            transactionStmt.executeUpdate();
 
 	            conn.commit(); 

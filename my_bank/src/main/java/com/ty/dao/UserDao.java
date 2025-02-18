@@ -57,8 +57,8 @@ public class UserDao {
 		    "    receiver_account_number BIGINT(12), " + // Updated to BIGINT(12)
 		    "    receiver_phone_number VARCHAR(15), " +
 		    "    amount DECIMAL(12, 2) NOT NULL, " +
-		    "    transaction_type VARCHAR(20) CHECK (transaction_type IN ('SELF', 'BANK', 'PHONE')), " +
-		    "    transaction_mode VARCHAR(10) CHECK (transaction_mode IN ('CREDIT', 'DEBIT')) NOT NULL, " +
+		    "    transaction_mode VARCHAR(20) CHECK (transaction_mode IN ('SELF', 'BANK', 'PHONE')), " +
+		    "    transaction_type VARCHAR(10) CHECK (transaction_type IN ('CREDIT', 'DEBIT')) NOT NULL, " +
 		    "    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
 		    "    status VARCHAR(20) CHECK (status IN ('SUCCESS', 'FAILED', 'PENDING')), " +
 		    "    remarks VARCHAR(255), " +

@@ -62,18 +62,17 @@ public class Transaction {
 	public void setRemarks(String remarks) {
 		this.remarks = remarks;
 	}
-	public Transaction(long senderAccountNumber, long receiverAccountNumber, long receiverPhoneNumber, BigDecimal amount,
-			String transactionType, String transactionMode, String status, String remarks) {
-		super();
-		this.senderAccountNumber = senderAccountNumber;
-		this.receiverAccountNumber = receiverAccountNumber;
-		this.receiverPhoneNumber = receiverPhoneNumber;
+	
+	public Transaction(long senderAccount, long receiverPhone, BigDecimal amount, String remark, String mode) {
+		this.senderAccountNumber = senderAccount;
+		this.receiverPhoneNumber = receiverPhone;
 		this.amount = amount;
-		this.transactionType = transactionType;
-		this.transactionMode = transactionMode;
-		this.status = status;
-		this.remarks = remarks;
+		this.remarks = remark;
+		this.transactionMode=mode;
+	
 	}
+	
+	
 	
 	
 }
