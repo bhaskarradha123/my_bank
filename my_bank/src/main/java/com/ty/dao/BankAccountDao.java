@@ -20,8 +20,6 @@ public class BankAccountDao {
 		return con;
 	}
 
-	
-
 	public List<BankAccount> fetchBankByEmail(String email) throws Exception {
 		List<BankAccount> list = new ArrayList<BankAccount>();
 		PreparedStatement ps = con().prepareStatement("select * from bank where email=?");
@@ -33,6 +31,38 @@ public class BankAccountDao {
 		}
 
 		return list;
+
+	}
+
+	public BankAccount fetchBalanceByAccNum(long accNum) throws Exception {
+
+		PreparedStatement ps = con().prepareStatement("select * from bank where accNum=? ");
+		ps.setLong(1, accNum);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+
+			return new BankAccount(rs.getInt("pin"), rs.getDouble("balance"), rs.getLong("accNum"),
+					rs.getString("bankName"));
+
+		} else
+
+			return null;
+
+	}
+	
+	
+	public boolean fetchAccountByPhone(long phoneNum) throws Exception {
+
+		PreparedStatement ps = con().prepareStatement("select * from bank where phoneNum=?");
+		ps.setLong(1, phoneNum);
+		ResultSet rs = ps.executeQuery();
+		if (rs.next()) {
+
+			return true;
+
+		} else
+
+			return false;
 
 	}
 
