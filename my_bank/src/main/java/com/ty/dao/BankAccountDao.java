@@ -20,11 +20,7 @@ public class BankAccountDao {
 		return con;
 	}
 
-	public void createTable() throws Exception {
-		Statement s = con().createStatement();
-		s.execute(
-				"CREATE TABLE IF NOT EXISTS bank (id INT PRIMARY KEY AUTO_INCREMENT,bankName varchar(45), pin INT(4),balance DOUBLE,accNum BIGINT(12) unique,ifsc VARCHAR(45),adharNum BIGINT(12),accountType VARCHAR(45),email VARCHAR(45),FOREIGN KEY (email) REFERENCES user(email) ON DELETE CASCADE ON UPDATE CASCADE)");
-	}
+	
 
 	public List<BankAccount> fetchBankByEmail(String email) throws Exception {
 		List<BankAccount> list = new ArrayList<BankAccount>();
@@ -41,7 +37,6 @@ public class BankAccountDao {
 	}
 
 	public int saveAccount(BankAccount b) throws SQLException, Exception {
-		createTable();
 		PreparedStatement ps = con().prepareStatement("insert into bank values(?,?,?,?,?,?,?,?,?)");
 		ps.setInt(1, b.getId());
 		ps.setString(2, b.getBankName());
@@ -49,7 +44,7 @@ public class BankAccountDao {
 		ps.setDouble(4, b.getBalance());
 		ps.setLong(5, b.getAccountNumber());
 		ps.setString(6, b.getIfsc());
-		ps.setLong(7, b.getAadharNum());
+		ps.setLong(7, b.getphoneNum());
 		ps.setString(8, b.getAccountType());
 		ps.setString(9, b.getEmail());
 		return ps.executeUpdate();

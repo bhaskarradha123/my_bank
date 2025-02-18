@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ty.dao.BankAccountDao;
+import com.ty.dao.UserDao;
 import com.ty.dto.BankAccount;
+import com.ty.dto.User;
 
 @WebServlet("/createAccount")
 public class CreateAccount extends HttpServlet {
@@ -19,18 +21,20 @@ public class CreateAccount extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		long accountNumber = Long.parseLong(req.getParameter("accountNumber"));
-		long aadharNum = Long.parseLong(req.getParameter("aadharNum"));
 		String ifsc = req.getParameter("ifsc");
 		String accountType = req.getParameter("accountType");
 		int pin = Integer.parseInt(req.getParameter("pin"));
 		String bankName=req.getParameter("bankName");
 		BankAccountDao dao = new BankAccountDao();
        
+		UserDao userDao=new UserDao();
 		HttpSession session = req.getSession();
 		try {
 		String email = (String) session.getAttribute("loginEmail");
+		User user = userDao.fetchProfileByEmail(email);
+
 		if (email != null) {
-          dao.saveAccount(new BankAccount(0, pin, 0, accountNumber, aadharNum, ifsc, accountType, email, bankName));
+          dao.saveAccount(new BankAccount(0, pin, 0, accountNumber, user.getPhone(), ifsc, accountType, email, bankName));
 			req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 
 		} else {

@@ -4,7 +4,7 @@ public class BankAccount {
 	
 	 private int id, pin;
 	 private  double balance;
-	 private long accountNumber,aadharNum;
+	 private long accountNumber,phoneNum;
 	 private String ifsc,accountType,email, bankName;
 	 
 	 
@@ -47,11 +47,11 @@ public class BankAccount {
 	public void setAccountNumber(long accountNumber) {
 		this.accountNumber = accountNumber;
 	}
-	public long getAadharNum() {
-		return aadharNum;
+	public long getphoneNum() {
+		return phoneNum;
 	}
-	public void setAadharNum(long aadharNum) {
-		this.aadharNum = aadharNum;
+	public void setAadharNum(long phoneNum) {
+		this.phoneNum = phoneNum;
 	}
 	public String getIfsc() {
 		return ifsc;
@@ -71,14 +71,14 @@ public class BankAccount {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public BankAccount(int id, int pin, double balance, long accountNumber, long aadharNum, String ifsc,
+	public BankAccount(int id, int pin, double balance, long accountNumber, long phoneNum, String ifsc,
 			String accountType, String email, String bankName) {
 		super();
 		this.id = id;
 		this.pin = pin;
 		this.balance = balance;
 		this.accountNumber = accountNumber;
-		this.aadharNum = aadharNum;
+		this.phoneNum = phoneNum;
 		this.ifsc = ifsc;
 		this.accountType = accountType;
 		this.email = email;
@@ -90,7 +90,7 @@ public class BankAccount {
 	@Override
 	public String toString() {
 		return "BankAccount [id=" + id + ", pin=" + pin + ", balance=" + balance + ", accountNumber=" + accountNumber
-				+ ", aadharNum=" + aadharNum + ", ifsc=" + ifsc + ", accountType=" + accountType + ", email=" + email
+				+ ", phoneNum=" + phoneNum + ", ifsc=" + ifsc + ", accountType=" + accountType + ", email=" + email
 				+ "]";
 	}
 	 

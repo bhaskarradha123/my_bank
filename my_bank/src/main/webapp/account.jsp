@@ -23,9 +23,7 @@
     <label for="accountNumber">Account Number:</label>
     <input type="number" id="accountNumber" name="accountNumber" required>
 
-    <label for="aadharNum">Aadhar Number (12 digits):</label>
-    <input type="number" id="aadharNum" name="aadharNum" pattern="\d{12}" title="Aadhar number must be exactly 12 digits" required>
-
+   
     <label for="ifsc">IFSC Code:</label>
     <input type="text" id="ifsc" name="ifsc" required>
 

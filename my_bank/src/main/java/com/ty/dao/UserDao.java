@@ -11,17 +11,64 @@ import com.ty.dto.User;
 
 public class UserDao {
 
-	public static Connection con() throws Exception {
+	public  Connection con() throws Exception {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection con = DriverManager
 				.getConnection("jdbc:mysql://localhost:3306/my_bank?createDatabaseIfNotExist=true", "root", "root");
 		return con;
 	}
 
-	public static void createTable() throws Exception {
+	public  void createTable() throws Exception {
 		Statement s = con().createStatement();
+		// Create the User table
 		s.execute(
-				"create table if not exists user(email varchar(45) primary key,fname varchar(45),lname varchar(45),pwd varchar(45),gender varchar(45),address varchar(45),age int(5),phone bigint(10),image varchar(45))");
+		    "CREATE TABLE IF NOT EXISTS user (" +
+		    "    email VARCHAR(45) PRIMARY KEY, " +
+		    "    fname VARCHAR(45), " +
+		    "    lname VARCHAR(45), " +
+		    "    pwd VARCHAR(45), " +
+		    "    gender VARCHAR(45), " +
+		    "    address VARCHAR(45), " +
+		    "    age INT(5), " +
+		    "    phone BIGINT(10) UNIQUE, " +
+		    "    image VARCHAR(45)" +
+		    ")");
+
+		// Create the Bank table
+		s.execute(
+		    "CREATE TABLE IF NOT EXISTS bank (" +
+		    "    id INT PRIMARY KEY AUTO_INCREMENT, " +
+		    "    bankName VARCHAR(45), " +
+		    "    pin INT(4), " +
+		    "    balance DOUBLE, " +
+		    "    accNum BIGINT(12) UNIQUE, " +
+		    "    ifsc VARCHAR(45), " +
+		    "    phoneNum BIGINT(10), " +
+		    "    accountType VARCHAR(45), " +
+		    "    email VARCHAR(45), " +
+		    "    FOREIGN KEY (email) REFERENCES user(email) ON DELETE CASCADE ON UPDATE CASCADE" +
+		    ")");
+
+		// Create the Transactions table (updated to match data types)
+		s.execute(
+		    "CREATE TABLE IF NOT EXISTS transactions (" +
+		    "    transaction_id INT PRIMARY KEY AUTO_INCREMENT, " +
+		    "    sender_account_number BIGINT(12) NOT NULL, " + // Updated to BIGINT(12)
+		    "    receiver_account_number BIGINT(12), " + // Updated to BIGINT(12)
+		    "    receiver_phone_number VARCHAR(15), " +
+		    "    amount DECIMAL(12, 2) NOT NULL, " +
+		    "    transaction_type VARCHAR(20) CHECK (transaction_type IN ('SELF', 'BANK', 'PHONE')), " +
+		    "    transaction_mode VARCHAR(10) CHECK (transaction_mode IN ('CREDIT', 'DEBIT')) NOT NULL, " +
+		    "    transaction_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, " +
+		    "    status VARCHAR(20) CHECK (status IN ('SUCCESS', 'FAILED', 'PENDING')), " +
+		    "    remarks VARCHAR(255), " +
+		    "    FOREIGN KEY (sender_account_number) REFERENCES bank(accNum), " +
+		    "    INDEX idx_sender_account (sender_account_number), " + // Index for faster lookup
+		    "    INDEX idx_receiver_account (receiver_account_number), " + // Index for faster lookup
+		    "    INDEX idx_transaction_date (transaction_date) " + // Index for sorting by date
+		    ")"
+		);
+
 	}
 
 	public int save(User udto) throws Exception {
