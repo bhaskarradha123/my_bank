@@ -1,6 +1,7 @@
 package com.ty.dto;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 
 public class Transaction {
 
@@ -8,6 +9,16 @@ public class Transaction {
 	private long senderAccountNumber,receiverAccountNumber,receiverPhoneNumber;
 	private BigDecimal amount;
 	private String transactionType,transactionMode,status,remarks;
+	
+	private Timestamp transactionDate;
+	
+	
+	public Timestamp getTransactionDate() {
+		return transactionDate;
+	}
+	public void setTransactionDate(Timestamp transactionDate) {
+		this.transactionDate = transactionDate;
+	}
 	public int getTransactionsId() {
 		return transactionsId;
 	}
@@ -74,6 +85,7 @@ public class Transaction {
 	public Transaction() {
 		super();
 	}
+	
 	
 	
 	
