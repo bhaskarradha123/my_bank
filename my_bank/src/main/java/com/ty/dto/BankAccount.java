@@ -10,8 +10,9 @@ public class BankAccount {
 	 
 	 
 	 
-	public BankAccount(int pin, double balance, long accountNumber, String bankName) {
+	public BankAccount(String ifsc,int pin, double balance, long accountNumber, String bankName) {
 		super();
+		this.ifsc=ifsc;
 		this.pin = pin;
 		this.balance = balance;
 		this.accountNumber = accountNumber;

@@ -67,7 +67,7 @@ if(status!=null){
             %>
         </select>
         <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" step="0.01" min="1" placeholder="Enter amount" required>
+        <input type="number" id="amount" name="amount" step="0.01" min="100" placeholder="Enter amount" required>
 
   <label for="pin">Enter PIN:</label>
       <input type="password" id="pin" name="pin" pattern="\d{4}" title="Enter a 4-digit PIN" required>
