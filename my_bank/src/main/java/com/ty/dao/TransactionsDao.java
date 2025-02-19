@@ -39,10 +39,12 @@ public class TransactionsDao {
 	            deductStmt.setLong(2, t.getSenderAccountNumber());
 	            int senderUpdate = deductStmt.executeUpdate();
                    
-	            String creditQuery = "UPDATE bank SET balance = balance + ? WHERE phoneNum = ?";
+	            String creditQuery = "UPDATE bank SET balance = balance + ? WHERE phoneNum = ? OR accNum = ?";
 	            creditStmt = conn.prepareStatement(creditQuery);
 	            creditStmt.setBigDecimal(1, t.getAmount());
 	            creditStmt.setLong(2, t.getReceiverPhoneNumber());
+	            creditStmt.setLong(3, t.getReceiverAccountNumber());
+
 	            int receiverUpdate = creditStmt.executeUpdate();
 
 

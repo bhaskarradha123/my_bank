@@ -71,6 +71,11 @@ public class Transaction {
 		this.transactionMode=mode;
 	
 	}
+	public Transaction() {
+		super();
+	}
+	
+	
 	
 	
 	
