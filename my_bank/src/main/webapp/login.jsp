@@ -10,6 +10,14 @@
 </head>
 <body>
 
+<% String msg=(String)request.getAttribute("result");
+if(msg!=null){
+%>
+
+<p><%=msg %></p>
+
+<%} %>
+
 
 <div class="container">
     <div class="heading">Sign In</div>
