@@ -51,18 +51,20 @@ public class BankAccountDao {
 	}
 	
 	
-	public boolean fetchAccountByPhone(long phoneNum) throws Exception {
+	public BankAccount fetchAccountByPhone(long phoneNum) throws Exception {
 
 		PreparedStatement ps = con().prepareStatement("select * from bank where phoneNum=?");
 		ps.setLong(1, phoneNum);
 		ResultSet rs = ps.executeQuery();
 		if (rs.next()) {
 
-			return true;
+			return new BankAccount(rs.getString("ifsc"),rs.getInt("pin"), rs.getDouble("balance"), rs.getLong("accNum"),
+					rs.getString("bankName"));
+
 
 		} else
 
-			return false;
+			return null;
 
 	}
 

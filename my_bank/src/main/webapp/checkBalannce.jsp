@@ -92,5 +92,7 @@
          request.getRequestDispatcher("account.jsp").forward(request, response);
        } %>
   </div>
+      <a href="dashboard.jsp"><button>DASHBOARD</button></a>
+  
 </body>
 </html>

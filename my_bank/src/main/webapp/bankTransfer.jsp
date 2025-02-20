@@ -62,5 +62,7 @@ if(status!=null){
         <button type="submit">Send Money</button>
     </form>
 
+      <a href="dashboard.jsp"><button>DASHBOARD</button></a>
+
 </body>
 </html>

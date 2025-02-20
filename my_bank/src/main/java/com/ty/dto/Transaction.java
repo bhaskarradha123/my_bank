@@ -82,6 +82,12 @@ public class Transaction {
 		this.transactionMode=mode;
 	
 	}
+	
+	public Transaction(long senderAccount, long receiverPhone,  long receiverAccountNumber,BigDecimal amount, String remark, String mode) {
+		this(senderAccount, receiverPhone, amount, remark, mode);
+		this.receiverAccountNumber=receiverAccountNumber;
+	
+	}
 	public Transaction() {
 		super();
 	}

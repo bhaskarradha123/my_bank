@@ -51,7 +51,6 @@ public class TransactionsDao {
 			transactionStmt.setLong(3, t.getReceiverPhoneNumber());
 			transactionStmt.setBigDecimal(4, t.getAmount());
 			transactionStmt.setString(5, t.getTransactionMode());
-			System.out.println(t.getTransactionMode());
 			transactionStmt.setString(6, t.getRemarks());
 			transactionStmt.executeUpdate();
 

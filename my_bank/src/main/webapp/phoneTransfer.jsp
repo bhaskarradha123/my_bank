@@ -3,16 +3,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="javax.servlet.http.HttpSession" %>
 
-<% String status=(String)request.getAttribute("status");
-if(status!=null){
-%>
 
-<p><%=status %></p>
-
-<%}
-   String email=(String)session.getAttribute("loginEmail");
-    List<BankAccount> bankAccounts =new BankAccountDao ().fetchBankByEmail(email) ;
-%>
 
 <!DOCTYPE html>
 <html>
@@ -25,6 +16,17 @@ if(status!=null){
     </style>
 </head>
 <body>
+
+<% String status=(String)request.getAttribute("status");
+if(status!=null){
+%>
+
+<p><%=status %></p>
+
+<%}
+   String email=(String)session.getAttribute("loginEmail");
+    List<BankAccount> bankAccounts =new BankAccountDao ().fetchBankByEmail(email) ;
+%>
 
     <h2 style="text-align:center;">Send Money to Phone Number</h2>
 
@@ -56,6 +58,10 @@ if(status!=null){
       
         <button type="submit">Send Money</button>
     </form>
+
+
+
+      <a href="dashboard.jsp"><button>DASHBOARD</button></a>
 
 </body>
 </html>

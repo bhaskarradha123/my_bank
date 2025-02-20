@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 import javax.servlet.RequestDispatcher;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,7 +14,6 @@ import com.ty.dao.BankAccountDao;
 import com.ty.dao.TransactionsDao;
 import com.ty.dto.BankAccount;
 import com.ty.dto.Transaction;
-import com.ty.enums.TransactionMode;
 
 @WebServlet("/numberTransfer")
 public class TransferMoney extends HttpServlet {
@@ -37,16 +35,23 @@ public class TransferMoney extends HttpServlet {
 		TransactionsDao transactionDao = new TransactionsDao();
 		try {
 			BankAccount presentdata = dao.fetchBalanceByAccNum(senderAccount);
-			boolean recieverStatus = dao.fetchAccountByPhone(receiverPhone);
+			BankAccount recieverData = dao.fetchAccountByPhone(receiverPhone);
 			if (presentdata.getPin() == pin) {
 				if (presentdata.getBalance() > 0) {
-					if (recieverStatus) {
+					
+					if(presentdata.getphoneNum()!=receiverPhone) {
+						
+						if (recieverData!=null) {
 
-						transactionDao.transferMoney( new Transaction(senderAccount, receiverPhone, transferAmount, remark,"PHONE"));
-						request.setAttribute("status", "Successfull");
+							transactionDao.transferMoney( new Transaction(senderAccount, receiverPhone,recieverData.getAccountNumber(), transferAmount, remark,"PHONE"));
+							request.setAttribute("status", "Successfull");
 
-					} else
-						request.setAttribute("status", "Reciever Number Not Exist");
+						} else
+							request.setAttribute("status", "Reciever Number Not Exist");
+			
+					}else
+						request.setAttribute("status", "You cant send to your number");
+
 				} else
 					request.setAttribute("status", "insufficient funds");
 
