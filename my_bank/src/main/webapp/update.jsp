@@ -32,7 +32,7 @@
         <input required="required" class="input" type="email" name="email" value="<%= data.getEmail()%>"> 
 		<input	 type="submit" value="EDIT">
 	</form>
-
+<a href="dashboard.jsp"><button>DASHBOARD</button></a>
 
 
 

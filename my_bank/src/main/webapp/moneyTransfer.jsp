@@ -1,4 +1,7 @@
 <!-- Money Transfer Selection Page with CSS -->
+<%@page import="com.ty.dao.BankAccountDao"%>
+<%@page import="com.ty.dto.BankAccount"%>
+<%@page import="java.util.List"%>
 <html>
 <head>
   <title>Money Transfer Options</title>
@@ -44,6 +47,11 @@
   </style>
 </head>
 <body>
+
+
+ <% String email = (String) session.getAttribute("loginEmail");
+       List<BankAccount> list = new BankAccountDao().fetchBankByEmail(email);
+       if (list.size() > 0) { %>
   <div class="container">
     <h2>Select Transfer Type</h2>
     <form method="get">
@@ -51,6 +59,13 @@
       <button class="option-btn" formaction="bankTransfer.jsp">To Bank Account</button>
       <button class="option-btn" formaction="phoneTransfer.jsp">To Phone Number </button>
     </form>
+    
+    <%}
+       else{
+    	   request.setAttribute("msg", "You don't have an account to Transfer Money. Please add an account first.");
+           request.getRequestDispatcher("account.jsp").forward(request, response);
+              }
+       %>
   </div>
 </body>
 </html>

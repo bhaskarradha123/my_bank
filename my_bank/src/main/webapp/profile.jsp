@@ -56,8 +56,7 @@
         </tr>
     </table>
     
-    <!-- Link to Home Page -->
-    <a href="dashboard.jsp" class="home-link">Go to Home Page</a>
+<a href="dashboard.jsp"><button>DASHBOARD</button></a>
 </div>
 <%} %>
 </body>

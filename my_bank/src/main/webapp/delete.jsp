@@ -30,6 +30,9 @@
     <input type="submit" value="DELETE"> 
     
     </form>
+    
+    <a href="dashboard.jsp"><button>DASHBOARD</button></a>
+    
 	<%
 	}
 	%>

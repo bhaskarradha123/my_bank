@@ -42,6 +42,7 @@
 
 
 
+
 	<%
 	}
 
@@ -106,6 +107,8 @@
 	}}
 	%>
 
+
+    <a href="dashboard.jsp"><button>DASHBOARD</button></a>
 
 
 </body>
