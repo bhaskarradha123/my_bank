@@ -45,7 +45,7 @@
 				type="email" name="email" placeholder="E-mail"> <input
 				required="required" class="input" type="password" name="password"
 				placeholder="Password"> <span class="forgot-password"><a
-				href="forgetPassword.jsp">Already Register? SIGNIN</a></span> <input
+				href="login.jsp">Already Register? SIGNIN</a></span> <input
 				class="login-button" type="submit" value="Sign Up">
 		</form>
 

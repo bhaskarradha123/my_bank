@@ -56,7 +56,7 @@ public class RegisterServlet extends HttpServlet {
                 rd.forward(req, resp);
             }
         } catch (Exception e) {
-            String s = "Email already exists, please try with another.";
+            String s = "account already exists with register mobile or email, please try with new Details.";
             req.setAttribute("msg", s);
             RequestDispatcher rd = req.getRequestDispatcher("signup.jsp");
             rd.include(req, resp);

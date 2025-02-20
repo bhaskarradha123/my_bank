@@ -17,6 +17,7 @@
       <input required="required" class="input" type="email" name="email" id="email" placeholder="E-mail">
       <input required="required" class="input" type="password" name="password" id="password" placeholder="Password">
       <span class="forgot-password"><a href="forgetPassword.jsp">Forgot Password ?</a></span>
+      <span> <a href="signup.jsp">Not Yet Register? SIGNUP</a></span> 
       <input class="login-button" type="submit" value="Sign In">
       
     </form>
