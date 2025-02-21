@@ -21,6 +21,17 @@ body {
 	position: relative;
 }
 
+.msg {
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0;
+	border: none;
+	border-radius: 5px;
+	background: rgba(230, 219, 219, 0.6);
+	color: rgb(249, 17, 17);
+	font-size: 16px;
+	transition: all 0.3s ease-in-out;
+}
 .dashboard-button {
 	position: absolute;
 	top: 20px;
@@ -83,15 +94,7 @@ body {
 </head>
 <body>
 
-	<%
-	String msg = (String) request.getAttribute("msg");
-
-	if (msg != null) {
-	%>
-	<p><%=msg%></p>
-	<%
-	}
-	%>
+	
 	<%
 	String email = (String) session.getAttribute("loginEmail");
 
@@ -100,7 +103,17 @@ body {
 	<a href="dashboard.jsp" class="dashboard-button">DASHBOARD</a>
 
 	<div class="container">
-		<div class="heading">DELETE FORM</div>
+			<div class="heading">DELETE FORM</div>
+	
+	<%
+	String msg = (String) request.getAttribute("msg");
+
+	if (msg != null) {
+	%>
+		<p class="msg" style="color: red;"><%=msg%></p>
+	<%
+	}
+	%>
 		<form action="delete" method="post" class="form">
 			<input name="email" value="<%=email%>" hidden="hidden"> <input
 				type="text" class="input" name="pwd"
