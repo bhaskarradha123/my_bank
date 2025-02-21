@@ -58,7 +58,7 @@
         border-radius: 5px;
     }
     
-    .login-button {
+    .update-button {
         margin-top: 20px;
         background: #3a8dde;
         color: white;
@@ -70,7 +70,7 @@
         font-size: 16px;
     }
     
-    .login-button:hover {
+    .update-button:hover {
         background: #2f75b5;
     }
 </style>
@@ -91,7 +91,7 @@
             <input class="input" type="text" name="address" required placeholder="Address">
             <input class="input" type="number" name="age" required min="1" placeholder="Age">
             <input class="input" type="tel" name="phone" required pattern="[0-9]{10}" placeholder="Phone Number">
-            <input class="login-button" type="submit" value="EDIT">
+            <input class="update-button" type="submit" value="EDIT">
         </form>
     </div>
 </body>
