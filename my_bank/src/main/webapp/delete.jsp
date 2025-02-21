@@ -118,7 +118,7 @@ body {
 			<input name="email" value="<%=email%>" hidden="hidden"> <input
 				type="text" class="input" name="pwd"
 				placeholder="enter pwd to delete your account"> <input
-				class="delete-button" type="submit" value="EDIT">
+				class="delete-button" type="submit" value="DELETE">
 
 		</form>
 	</div>
