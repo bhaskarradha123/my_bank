@@ -62,7 +62,7 @@ main {
 	backdrop-filter: blur(10px);
 	text-align: center;
 	margin-left: 30%;
-	margin-top: 2%;
+	margin-top: 7%;
 }
 
 .hero h1 {
@@ -80,10 +80,9 @@ footer {
 	color: white;
 	padding: 15px;
 	text-align: center;
-	position: relative;
 	bottom: 0;
 	width: 100%;
-	margin-top: 5%;
+	margin-top: 7%;
 }
 </style>
 </head>
