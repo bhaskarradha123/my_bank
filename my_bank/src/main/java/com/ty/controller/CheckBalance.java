@@ -36,15 +36,14 @@ public class CheckBalance extends HttpServlet {
 
 					if (bankAccount.getBankName().equals(bankName) && bankAccount.getAccountNumber() == accountNumber)
 						if (pin == bankAccount.getPin()) {
-							req.setAttribute("balanceMsg", " "+bankAccount.getBalance());
+							req.setAttribute("balanceMsg", " " + bankAccount.getBalance());
 						} else
 							req.setAttribute("wrongPin", "pin doesnt match");
-					req.getRequestDispatcher("checkBalannce.jsp").include(req, resp);
 
-					{
-
-					}
+					
 				}
+				req.getRequestDispatcher("checkBalannce.jsp").include(req, resp);
+
 			}
 		} catch (Exception e) {
 		}
