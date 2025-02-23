@@ -1,67 +1,143 @@
 <%@page import="com.ty.dto.BankAccount"%>
 <%@page import="com.ty.dao.BankAccountDao"%>
-<%@ page import="java.util.List" %>
-<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="java.util.List"%>
+<%@ page import="javax.servlet.http.HttpSession"%>
 
 
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Send Money to Phone Number</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        form { width: 300px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
-        input, select, button { margin-bottom: 12px; padding: 8px; width: 100%; }
-    </style>
+<title>Send Money to Phone Number</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	position: relative;
+}
+
+.msg {
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0;
+	border: none;
+	border-radius: 5px;
+	background: rgba(230, 219, 219, 0.6);
+	color: rgb(249, 17, 17);
+	font-size: 16px;
+	transition: all 0.3s ease-in-out;
+}
+.dashboard-button {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	background: #3a8dde;
+	color: white;
+	padding: 10px 15px;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 16px;
+	box-shadow: 0 0 15px rgba(25, 3, 150, 0.7);
+}
+
+.dashboard-button:hover {
+	background: #2f75b5;
+}
+
+.container {
+	background: #f8f9fa;
+	padding: 30px;
+	border-radius: 20px;
+	box-shadow: 0 0 15px rgba(25, 3, 150, 0.5);
+	width: 300px;
+	text-align: center;
+}
+
+.heading {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	color: #3a8dde;
+}
+
+.input {
+	width: 100%;
+	padding: 12px;
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.transfer-button {
+	margin-top: 20px;
+	background: #3a8dde;
+	color: white;
+	padding: 12px;
+	border: none;
+	width: 100%;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.transfer-button:hover {
+	background: #2f75b5;
+}
+</style>
+
 </head>
 <body>
+	<a href="dashboard.jsp" class="dashboard-button">DASHBOARD</a>
 
-<% String status=(String)request.getAttribute("status");
-if(status!=null){
-%>
+	<div class="container">
 
-<p><%=status %></p>
+	<%
+	String status = (String) request.getAttribute("status");
+	if (status != null) {
+	%>
 
-<%}
-   String email=(String)session.getAttribute("loginEmail");
-    List<BankAccount> bankAccounts =new BankAccountDao ().fetchBankByEmail(email) ;
-%>
+	<p class="msg"><%=status%></p>
 
-    <h2 style="text-align:center;">Send Money to Phone Number</h2>
+	<%
+	}
+	String email = (String) session.getAttribute("loginEmail");
+	List<BankAccount> bankAccounts = new BankAccountDao().fetchBankByEmail(email);
+	%>
 
-    <form action="numberTransfer" method="post">
-        <label for="account">Select Bank Account:</label>
-        <select name="senderAccount" id="account" required>
-            <option value="">-- Choose Account --</option>
-            <% 
-                if (bankAccounts.size()>0) {
-                    for (BankAccount account : bankAccounts) {
-            %>
-                <option value="<%= account.getAccountNumber() %>">
-                    <%= account.getBankName() %> - <%= account.getAccountNumber() %> (Balance: <%= account.getBalance() %>)
-                </option>
-            <%
-                    }
-                }
-            %>
-        </select>
+			<div class="heading">SEND MONEY TO PHONE NUMBER</div>
 
-        <label for="phone">Recipient Phone Number:</label>
-        <input type="tel" id="phone" name="receiverPhone" pattern="[0-9]{10}" placeholder="Enter 10-digit phone number" required>
+	<form action="numberTransfer" method="post">
+		 <select class="input" name="senderAccount" id="account" required>
+			<option value="">-- Choose Account --</option>
+			<%
+			if (bankAccounts.size() > 0) {
+				for (BankAccount account : bankAccounts) {
+			%>
+			<option value="<%=account.getAccountNumber()%>">
+				<%=account.getBankName()%> -
+				<%=account.getAccountNumber()%> (Balance:
+				<%=account.getBalance()%>)
+			</option>
+			<%
+			}
+			}
+			%>
+		</select> 
+		<input type="tel"  class="input" name="receiverPhone" pattern="[0-9]{10}" placeholder="Enter 10-digit phone number" required> 
+        <input type="number"  class="input"	name="amount" step="0.01" min="100" placeholder="Enter amount" required>  
+        <input type="password"  class="input" name="pin" pattern="\d{4}"title="Enter a 4-digit PIN" required>
 
-        <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" step="0.01" min="100" placeholder="Enter amount" required>
+		<button class="transfer-button" type="submit">Send Money</button>
+	</form>
 
-  <label for="pin">Enter PIN:</label>
-      <input type="password" id="pin" name="pin" pattern="\d{4}" title="Enter a 4-digit PIN" required>
-      
-        <button type="submit">Send Money</button>
-    </form>
+</div>
 
-
-
-      <a href="dashboard.jsp"><button>DASHBOARD</button></a>
 
 </body>
 </html>
