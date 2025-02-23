@@ -1,89 +1,168 @@
 <%@page import="com.ty.dto.BankAccount"%>
 <%@page import="com.ty.dao.BankAccountDao"%>
-<%@ page import="java.util.List" %>
-<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="java.util.List"%>
+<%@ page import="javax.servlet.http.HttpSession"%>
 
 
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Send Money to Your Account</title>
-    <style>
-        body { font-family: Arial, sans-serif; }
-        form { width: 300px; margin: 50px auto; padding: 20px; border: 1px solid #ccc; border-radius: 8px; }
-        input, select, button { margin-bottom: 12px; padding: 8px; width: 100%; }
-    </style>
-    
-   
+<title>Send Money to Your Account</title>
+<style>
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0;
+	background-color: #ffffff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	position: relative;
+}
+
+.msg {
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0;
+	border: none;
+	border-radius: 5px;
+	background: rgba(230, 219, 219, 0.6);
+	color: rgb(249, 17, 17);
+	font-size: 16px;
+	transition: all 0.3s ease-in-out;
+}
+.dashboard-button {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+	background: #3a8dde;
+	color: white;
+	padding: 10px 15px;
+	border-radius: 5px;
+	text-decoration: none;
+	font-size: 16px;
+	box-shadow: 0 0 15px rgba(25, 3, 150, 0.7);
+}
+
+.dashboard-button:hover {
+	background: #2f75b5;
+}
+
+.container {
+	background: #f8f9fa;
+	padding: 30px;
+	border-radius: 20px;
+	box-shadow: 0 0 15px rgba(25, 3, 150, 0.5);
+	width: 300px;
+	text-align: center;
+}
+
+.heading {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+	color: #3a8dde;
+}
+
+.input {
+	width: 100%;
+	padding: 12px;
+	margin: 10px 0;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+
+.transfer-button {
+	margin-top: 20px;
+	background: #3a8dde;
+	color: white;
+	padding: 12px;
+	border: none;
+	width: 100%;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+.transfer-button:hover {
+	background: #2f75b5;
+}
+</style>
+
+
 </head>
 <body>
 
-<% String status=(String)request.getAttribute("status");
-if(status!=null){
-%>
+	<a href="dashboard.jsp" class="dashboard-button">DASHBOARD</a>
 
-<p><%=status %></p>
+	<div class="container">
 
-<%}
-   String email=(String)session.getAttribute("loginEmail");
-    List<BankAccount> bankAccounts =new BankAccountDao ().fetchBankByEmail(email) ;
-    if(bankAccounts.size()>1){
-%>
+	<%
+	String status = (String) request.getAttribute("status");
+	if (status != null) {
+	%>
+
+	<p class="msg"><%=status%></p>
+
+	<%
+	}
+	String email = (String) session.getAttribute("loginEmail");
+	List<BankAccount> bankAccounts = new BankAccountDao().fetchBankByEmail(email);
+	if (bankAccounts.size() > 1) {
+	%>
 
 
-    <h2 style="text-align:center;">Send Money to Your Account</h2>
+			<div class="heading">SEND MONEY TO YOUR ACCOUNT </div>
 
-<form action="selfTransfer" method="post" >        
-<label for="account">Select From  Bank Account:</label>
-        <select name="senderAccount" id="account" required>
-            <option value="">-- Choose  From Account --</option>
-            <% 
-                if (bankAccounts.size()>0) {
-                    for (BankAccount account : bankAccounts) {
-            %>
-                <option value="<%= account.getAccountNumber() %>">
-                    <%= account.getBankName() %> - <%= account.getAccountNumber() %> (Balance: <%= account.getBalance() %>)
-                </option>
-            <%
-                    }
-                }
-            %>
-        </select>
+	<form action="selfTransfer" method="post">
+		 <select	name="senderAccount" class="input" required>
+			<option value="">-- Choose From Account --</option>
+			<%
+			if (bankAccounts.size() > 0) {
+				for (BankAccount account : bankAccounts) {
+			%>
+			<option value="<%=account.getAccountNumber()%>">
+				<%=account.getBankName()%> -
+				<%=account.getAccountNumber()%> (Balance:
+				<%=account.getBalance()%>)
+			</option>
+			<%
+			}
+			}
+			%>
+		</select> 
+		<select name="recieverAccount" class="input" required>
+			<option value="">-- Choose To Account --</option>
+			<%
+			if (bankAccounts.size() > 0) {
+				for (BankAccount account : bankAccounts) {
+			%>
+			<option value="<%=account.getAccountNumber()%>">
+				<%=account.getBankName()%> -
+				<%=account.getAccountNumber()%>
+			</option>
+			<%
+			}
+			}
+			%>
+		</select> 
+		<input type="number" class="input"	name="amount" step="0.01" min="100" placeholder="Enter amount"required> 
+		 <input type="password"  name="pin" pattern="\d{4}" class="input"	title="Enter a 4-digit PIN" required>
 
-          <label for="account">Select To Bank Account:</label>
-        <select name="recieverAccount" id="account" required>
-            <option value="">-- Choose To Account --</option>
-            <% 
-                if (bankAccounts.size()>0) {
-                    for (BankAccount account : bankAccounts) {
-            %>
-                <option value="<%= account.getAccountNumber() %>">
-                    <%= account.getBankName() %> - <%= account.getAccountNumber() %> 
-                </option>
-            <%
-                    }
-                }
-            %>
-        </select>
-        <label for="amount">Amount:</label>
-        <input type="number" id="amount" name="amount" step="0.01" min="100" placeholder="Enter amount" required>
+		<button  class="transfer-button" type="submit">Send Money</button>
+	</form>
+</div>
+	<%
+	} else {
+	request.setAttribute("msg",
+			"you dont have multiple accounts to perform pls try to correct another account for self transfer");
+	request.getRequestDispatcher("account.jsp").forward(request, response);
+	}
+	%>
 
-  <label for="pin">Enter PIN:</label>
-      <input type="password" id="pin" name="pin" pattern="\d{4}" title="Enter a 4-digit PIN" required>
-      
-        <button type="submit">Send Money</button>
-    </form>
 
-<%}
-    else{
-    	request.setAttribute("msg", "you dont have multiple accounts to perform pls try to correct another account for self transfer");
-    	request.getRequestDispatcher("account.jsp").forward(request, response);
-    }
-    %>
-    
-          <a href="dashboard.jsp"><button>DASHBOARD</button></a>
-    
-   
+
 </body>
 </html>
