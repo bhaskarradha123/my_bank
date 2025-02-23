@@ -153,7 +153,7 @@
 			<a href="#">Account</a>
 			<div class="submenu">
 				<a href="account.jsp">Create Account</a>
-				 <a href="checkBalance.jsp">CheckBalance</a> 
+				 <a href="checkBalannce.jsp">CheckBalance</a> 
 				 <a href="moneyTransfer.jsp">Money Transfer</a> 
 				 <a href="transactions.jsp">Transactions</a>
 			</div>

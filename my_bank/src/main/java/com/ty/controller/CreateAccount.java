@@ -25,6 +25,10 @@ public class CreateAccount extends HttpServlet {
 		String accountType = req.getParameter("accountType");
 		int pin = Integer.parseInt(req.getParameter("pin"));
 		String bankName=req.getParameter("bankName");
+		String branch=req.getParameter("branch");
+		String city=req.getParameter("city");
+		String state=req.getParameter("state");
+
 		BankAccountDao dao = new BankAccountDao();
        
 		UserDao userDao=new UserDao();
@@ -34,7 +38,7 @@ public class CreateAccount extends HttpServlet {
 		User user = userDao.fetchProfileByEmail(email);
 
 		if (email != null) {
-          dao.saveAccount(new BankAccount(0, pin, 0, accountNumber, user.getPhone(), ifsc, accountType, email, bankName));
+          dao.saveAccount(new BankAccount(0, pin, 0, accountNumber, user.getPhone(), ifsc, accountType, email, bankName,branch,city,state));
 			req.getRequestDispatcher("dashboard.jsp").forward(req, resp);
 
 		} else {
@@ -43,7 +47,7 @@ public class CreateAccount extends HttpServlet {
 		}
 		}
 		catch (Exception e) {
-			e.printStackTrace();
+			
 			req.setAttribute("msg", "account already exist with accountNumber");
 			req.getRequestDispatcher("account.jsp").forward(req, resp);
 

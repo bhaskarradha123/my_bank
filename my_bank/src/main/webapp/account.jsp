@@ -166,7 +166,7 @@ label {
 				<option value="Savings">Savings</option>
 				<option value="Current">Current</option>
 			</select> 
-            </div>
+          </div>
             <div class="form-group"> 
 			<label for="ifsc">IFSC Code:</label>
 			<input type="text" class="input" id="ifsc" name="ifsc" placeholder="Enter IFSC Code" required onblur="fetchBankDetails()">

@@ -157,7 +157,7 @@ body {
 		<%
 		} else {
 		request.setAttribute("msg", "You don't have an account to check balance. Please add an account first.");
-		 response.sendRedirect("account.jsp");		}
+		 request.getRequestDispatcher("account.jsp").forward(request, response)	;	}
 		%>
 	</div>
 

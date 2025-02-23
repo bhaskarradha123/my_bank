@@ -69,7 +69,7 @@ public class BankAccountDao {
 	}
 
 	public int saveAccount(BankAccount b) throws SQLException, Exception {
-		PreparedStatement ps = con().prepareStatement("insert into bank values(?,?,?,?,?,?,?,?,?)");
+		PreparedStatement ps = con().prepareStatement("insert into bank values(?,?,?,?,?,?,?,?,?,?,?,?)");
 		ps.setInt(1, b.getId());
 		ps.setString(2, b.getBankName());
 		ps.setInt(3, b.getPin());
@@ -78,7 +78,11 @@ public class BankAccountDao {
 		ps.setString(6, b.getIfsc());
 		ps.setLong(7, b.getphoneNum());
 		ps.setString(8, b.getAccountType());
-		ps.setString(9, b.getEmail());
+		ps.setString(9, b.getBranch());
+		ps.setString(10, b.getCity());
+		ps.setString(11, b.getState());
+
+		ps.setString(12, b.getEmail());
 		return ps.executeUpdate();
 
 	}

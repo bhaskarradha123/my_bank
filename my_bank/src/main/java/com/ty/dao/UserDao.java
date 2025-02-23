@@ -25,11 +25,21 @@ public class UserDao {
 				+ "    gender VARCHAR(45), " + "    address VARCHAR(45), " + "    age INT(5), "
 				+ "    phone BIGINT(10) UNIQUE, " + "    image VARCHAR(45)" + ")");
 
-		s.execute("CREATE TABLE IF NOT EXISTS bank (" + "    id INT PRIMARY KEY AUTO_INCREMENT, "
-				+ "    bankName VARCHAR(45), " + "    pin INT(4), " + "    balance DOUBLE, "
-				+ "    accNum BIGINT(12) UNIQUE, " + "    ifsc VARCHAR(45), " + "    phoneNum BIGINT(10), "
-				+ "    accountType VARCHAR(45), " + "    email VARCHAR(45), "
-				+ "    FOREIGN KEY (email) REFERENCES user(email) ON DELETE CASCADE ON UPDATE CASCADE" + ")");
+		s.execute("CREATE TABLE IF NOT EXISTS bank ("
+		        + "    id INT PRIMARY KEY AUTO_INCREMENT, "
+				+ "    bankName VARCHAR(45), " 
+		        + "    pin INT(4), " 
+				+ "    balance DOUBLE, "
+				+ "    accNum BIGINT(12) UNIQUE, "
+				+ "    ifsc VARCHAR(45), " 
+				+ "    phoneNum BIGINT(10), "
+				+ "    accountType VARCHAR(45), "
+				+ "    branch varchar(50),"
+				+ "    city varchar(50),"
+				+ "    state varchar(50)," 
+				+ "    email VARCHAR(45), "
+				+ "    FOREIGN KEY (email) REFERENCES user(email) ON DELETE CASCADE ON UPDATE CASCADE" 
+				+ ")");
 
 		s.execute("CREATE TABLE IF NOT EXISTS transactions (" + "    transaction_id INT PRIMARY KEY AUTO_INCREMENT, "
 				+ "    sender_account_number BIGINT(12) NOT NULL, " + "    receiver_account_number BIGINT(12), "
