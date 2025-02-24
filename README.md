@@ -37,3 +37,11 @@
 ## Development Tools 📺
 
 ![Eclipse](https://img.shields.io/static/v1?style=for-the-badge&message=eclipse&color=007396&logo=eclipse&logoColor=FFFFFF&label=)
+
+## Database 📦
+
+![Mysql](https://img.shields.io/static/v1?style=for-the-badge&message=MySQL&color=7952B3&logo=mysql&logoColor=FFFFFF&label=)
+
+## API's 🌍
+
+![Static Badge](https://img.shields.io/badge/RozarPay%20-API-blue)
