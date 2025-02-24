@@ -117,9 +117,11 @@
     .ad-section {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 60px;
+        gap: 30px;
         justify-content: center;
-        padding: 40px;
+        padding: 20px;
+        
+        margin: 50px;
     }
 
 
@@ -130,9 +132,8 @@
     
 
     .ad-container {
-    position:relative;
-        width: 300px;
-        height: 180px;
+        width: 250px;
+        height: 200px;
         border-radius: 10px;
         overflow: hidden;
         cursor: pointer;
@@ -190,6 +191,16 @@
             grid-template-columns: repeat(1, 1fr);
         }
     }
+      @media (max-width: 768px) {
+            .offcanvas {
+                width: 100%;
+                right: -100%;
+            }
+
+            .offcanvas.open {
+                right: 0;
+            }
+        }
 </style>
 </head>
 <body>
