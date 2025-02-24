@@ -24,9 +24,10 @@
 
 ## Server Side ⚡
 
-![Java](https://img.shields.io/static/v1?style=for-the-badge&message=Java&color=007396&logo=Java&logoColor=FFFFFF&label=)
+![Java](https://img.shields.io/static/v1?style=for-the-badge&message=Java&color=007396&logo=java&logoColor=FFFFFF&label=)
 ![Servlets](https://img.shields.io/static/v1?style=for-the-badge&message=Servlets&color=7952B3&logo=Java&logoColor=FFFFFF&label=)
 ![Jsp](https://img.shields.io/static/v1?style=for-the-badge&message=Jsp&color=E34F26&logo=Java&logoColor=FFFFFF&label=)
+![JDBC](https://img.shields.io/static/v1?style=for-the-badge&message=JDBC&color=222223&logo=jdbc&logoColor=FFFFFF&label=)
 
 
 
