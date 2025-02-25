@@ -204,7 +204,7 @@ to {
 
 	<div class="offcanvas" id="offcanvasMenu">
 		<a href="javascript:void(0)" onclick="toggleMenu()"
-			style="display: block; text-align: right; padding-right: 10px;">✖</a>
+			style="display: block; text-align: right; padding-right: 10px;"></a>
 		<div class="profile">
 			<a href="#">Profile</a>
 			<div class="submenu">
