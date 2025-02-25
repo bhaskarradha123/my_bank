@@ -21,21 +21,21 @@
     }
     
     .dashboard-button {
-	position: absolute;
-	top: 20px;
-	left: 20px;
-	background: #3a8dde;
-	color: white;
-	padding: 10px 15px;
-	border-radius: 5px;
-	text-decoration: none;
-	font-size: 16px;
-	box-shadow: 0 0 15px rgba(25, 3, 150, 0.7);
-}
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: #3a8dde;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 16px;
+        box-shadow: 0 0 15px rgba(25, 3, 150, 0.7);
+    }
 
-.dashboard-button:hover {
-	background: #2f75b5;
-}
+    .dashboard-button:hover {
+        background: #2f75b5;
+    }
     
     .profile-container {
         background: #f8f9fa;
@@ -45,18 +45,17 @@
         width: 60%;
         max-width: 600px;
         text-align: center;
-        
     }
     
     .image-div img {
-        width: 120px;
+        width: 300px;
         height: 120px;
-        border-radius: 50%;
+         border-radius: 50%; 
         object-fit: cover;
         border: 3px solid #3a8dde;
         margin-bottom: 15px;
     }
-    
+
     .upload-button {
         display: inline-block;
         background: #3a8dde;
@@ -101,6 +100,7 @@
     tr:nth-child(even) {
         background: #f2f2f2;
     }
+
     .edit-button, .delete-button {
         background: #3a8dde;
         color: white;
@@ -110,7 +110,6 @@
         cursor: pointer;
         margin: 15px;
         box-shadow: 0 0 15px rgba(25, 3, 150, 0.2);
-        
     }
     
     .delete-button {
@@ -130,14 +129,23 @@
     <a href="dashboard.jsp" class="dashboard-button">DASHBOARD</a>
     
     <%
-	String email = (String) session.getAttribute("loginEmail");
-	UserDao dao = new UserDao();
-	User p = dao.fetchProfileByEmail(email);
-	if (email != null && p != null) {
-	%>
+        String email = (String) session.getAttribute("loginEmail");
+        UserDao dao = new UserDao();
+        User p = dao.fetchProfileByEmail(email);
+        
+        if (email != null && p != null) {
+            String imagePath = p.getImage();
+            if (imagePath == null || imagePath.trim().isEmpty()) {
+                imagePath = "default-profile.png"; // Fallback image
+            } else {
+                imagePath = "image?file=" + imagePath.substring(imagePath.lastIndexOf('/') + 1);
+            }
+    %>
+    
+    
     <div class="profile-container">
         <div class="image-div">
-            <img alt="Your Image" src="<%= p.getImage() %>">
+            <img alt="Your Image" src="<%= imagePath %>">
         </div>
 
         <div>
@@ -178,16 +186,15 @@
                 <td><%= p.getAddress() %></td>
             </tr>
         </table>
-          <div class="buttons">
-          <a href="update.jsp"><button class="edit-button">Edit</button></a>
-           <a href="delete.jsp"> <button class="delete-button">Delete</button></a>
+        
+        <div class="buttons">
+            <a href="update.jsp"><button class="edit-button">Edit</button></a>
+            <a href="delete.jsp"><button class="delete-button">Delete</button></a>
         </div>
     </div>
-    <%} %>
+    
+    <% } else { %>
+        <p>No user profile found.</p>
+    <% } %>
 </body>
 </html>
-
-
-
-
-
