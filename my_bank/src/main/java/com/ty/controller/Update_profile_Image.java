@@ -1,5 +1,6 @@
 package com.ty.controller;
 
+import java.io.File;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -20,13 +21,32 @@ import com.ty.dto.User;
 public class Update_profile_Image extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Part p = req.getPart("ima");
-		String up = getServletContext().getRealPath("/uploads/");
-		String image_path = "uploads/" + p.getSubmittedFileName();
-		p.write(up + p.getSubmittedFileName());
+		
 		HttpSession hs = req.getSession();
 		String email = (String) hs.getAttribute("loginEmail");
 
+		
+		
+		Part p = req.getPart("ima");
+	    String image_path = null;
+
+	    if (p != null && p.getSize() > 0) {
+	        String uploadDir = "C:/uploads/"; 
+	        
+	        File dir = new File(uploadDir);
+	        if (!dir.exists()) {
+	            dir.mkdirs(); 
+	        }
+
+	        String fileName = System.currentTimeMillis() + "_" + p.getSubmittedFileName();
+	        String fullPath = uploadDir + fileName;
+
+	        p.write(fullPath);
+	        
+	        image_path = "uploads/" + fileName;
+	    }
+		
+		
 		
 		User udto = new User(email, null, null, null, null, null, image_path, 0, 0);
 		UserDao udao = new UserDao();
