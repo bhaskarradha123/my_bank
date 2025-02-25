@@ -18,49 +18,52 @@ import com.ty.dto.User;
 @MultipartConfig(maxFileSize = 1000000000)
 @WebServlet("/save")
 public class RegisterServlet extends HttpServlet {
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String fname = req.getParameter("firstName");
-        String lname = req.getParameter("lastName");
-        String address = req.getParameter("address");
-        String gender = req.getParameter("gender");
-        String email = req.getParameter("email");
-        String pwd = req.getParameter("password");
-        int age = Integer.parseInt(req.getParameter("age"));
-        long phone = Long.parseLong(req.getParameter("phone"));
-        
-        Part p = req.getPart("ima");
-        String image_path = null;
 
-        if (p != null && p.getSize() > 0) {
-            // Get the upload directory
-            String uploadDir = getServletContext().getRealPath("/uploads/");
-            
-            // Create the directory if it doesn't exist
-            File dir = new File(uploadDir);
-            if (!dir.exists()) {
-                dir.mkdirs();
-            }
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	    String fname = req.getParameter("firstName");
+	    String lname = req.getParameter("lastName");
+	    String address = req.getParameter("address");
+	    String gender = req.getParameter("gender");
+	    String email = req.getParameter("email");
+	    String pwd = req.getParameter("password");
+	    int age = Integer.parseInt(req.getParameter("age"));
+	    long phone = Long.parseLong(req.getParameter("phone"));
+	    
+	    Part p = req.getPart("ima");
+	    String image_path = null;
 
-            // Construct the image path and write the file
-            image_path = "uploads/" + p.getSubmittedFileName();
-            p.write(uploadDir + p.getSubmittedFileName());
-        }
+	    if (p != null && p.getSize() > 0) {
+	        String uploadDir = "C:/uploads/"; 
+	        
+	        File dir = new File(uploadDir);
+	        if (!dir.exists()) {
+	            dir.mkdirs(); 
+	        }
 
-        User udto = new User(email, pwd, fname, lname, gender, address, image_path, age, phone);
-        UserDao udao = new UserDao();
+	        String fileName = System.currentTimeMillis() + "_" + p.getSubmittedFileName();
+	        String fullPath = uploadDir + fileName;
 
-        try {
-            int a = udao.save(udto);
-            if (a > 0) {
-                RequestDispatcher rd = req.getRequestDispatcher("successRegistration.jsp");
-                rd.forward(req, resp);
-            }
-        } catch (Exception e) {
-            String s = "account already exists with register mobile or email, please try with new Details.";
-            req.setAttribute("msg", s);
-            RequestDispatcher rd = req.getRequestDispatcher("signup.jsp");
-            rd.include(req, resp);
-        }
-    }
+	        p.write(fullPath);
+	        
+	        image_path = "uploads/" + fileName;
+	    }
+
+	    User udto = new User(email, pwd, fname, lname, gender, address, image_path, age, phone);
+	    UserDao udao = new UserDao();
+
+	    try {
+	        int a = udao.save(udto);
+	        if (a > 0) {
+	            RequestDispatcher rd = req.getRequestDispatcher("successRegistration.jsp");
+	            rd.forward(req, resp);
+	        }
+	    } catch (Exception e) {
+	        String s = "Account already exists with registered mobile or email, please try with new details.";
+	        req.setAttribute("msg", s);
+	        RequestDispatcher rd = req.getRequestDispatcher("signup.jsp");
+	        rd.include(req, resp);
+	    }
+	}
+
 }

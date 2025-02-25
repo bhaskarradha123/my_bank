@@ -1,3 +1,4 @@
+<%@page import="com.ty.dto.User"%>
 <%@page import="com.ty.dao.UserDao"%>
 <%@page import="com.ty.dao.BankAccountDao"%>
 <%@page import="com.ty.dto.BankAccount"%>
@@ -28,8 +29,8 @@ body {
 }
 
 .profile-icon {
-	width: 40px;
-	height: 40px;
+	width: 100px;
+	height: 60px;
 	border-radius: 50%;
 	background: white;
 	display: flex;
@@ -116,7 +117,7 @@ footer {
 	gap: 30px;
 	justify-content: center;
 	padding: 20px;
-	margin: 50px;
+	margin: 40px;
 }
 
 .ad-container {
@@ -192,13 +193,22 @@ to {
 <body>
 	<%
 	String email = (String) session.getAttribute("loginEmail");
-	String name = new UserDao().fetchProfileByEmail(email).getFirstname();
-	if (email != null && name != null) {
+	User user = new UserDao().fetchProfileByEmail(email);
+	if (email != null && user != null) {
+		
+		
+            String imagePath = user.getImage();
+            if (imagePath == null || imagePath.trim().isEmpty()) {
+                imagePath = "default-profile.png"; // Fallback image
+            } else {
+                imagePath = "image?file=" + imagePath.substring(imagePath.lastIndexOf('/') + 1);
+            }
 	%>
 	<div class="navbar">
-		<div class="profile-icon">U</div>
+		<div ><img src="<%= imagePath %>" alt="User Image"  class="profile-icon">
+		</div>
 		Welcome,
-		<%=name%>
+		<%=user.getFirstname()+" "+user.getLastname()%>
 		<div class="menu" onclick="toggleMenu()">☰</div>
 	</div>
 

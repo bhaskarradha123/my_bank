@@ -23,7 +23,7 @@ public class UserDao {
 		s.execute("CREATE TABLE IF NOT EXISTS user (" + "    email VARCHAR(45) PRIMARY KEY, "
 				+ "    fname VARCHAR(45), " + "    lname VARCHAR(45), " + "    pwd VARCHAR(45), "
 				+ "    gender VARCHAR(45), " + "    address VARCHAR(45), " + "    age INT(5), "
-				+ "    phone BIGINT(10) UNIQUE, " + "    image VARCHAR(45)" + ")");
+				+ "    phone BIGINT(10) UNIQUE, " + "    image VARCHAR(225)" + ")");
 
 		s.execute("CREATE TABLE IF NOT EXISTS bank ("
 		        + "    id INT PRIMARY KEY AUTO_INCREMENT, "
@@ -102,7 +102,7 @@ public class UserDao {
 			long phone = rs.getLong("phone");
 			String path = rs.getString("image");
 			String pwd = rs.getString("pwd");
-			return new User(email, path, fname, lname, gender, address, pwd, age, phone);
+			return new User(email, pwd, fname, lname, gender, address, path, age, phone);
 
 		}
 		return null;
