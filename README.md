@@ -1,4 +1,4 @@
-# Banking_Web_Application
+# 🏦 Banking Application
 
 
 
@@ -46,3 +46,74 @@
 ## API's 🌍
 
 ![Static Badge](https://img.shields.io/badge/RozarPay%20-API-blue)
+
+
+
+
+
+
+
+
+
+
+## 🚀 Installation Guide
+
+### 1. Clone the Repository
+```sh
+git clone https://github.com/yourusername/banking-app.git
+cd banking-app
+```
+
+### 2. Set Up Database
+- Import `database.sql` into MySQL.  
+- Update `db.properties` with your database credentials.  
+
+### 3. Run the Application
+- Deploy on a **Tomcat Server**.  
+- Access the app at `http://localhost:8080/banking-app`.  
+
+---
+
+## 📂 Project Structure
+
+```
+/banking-app
+│── src/
+│   ├── dao/             # Database operations  
+│   ├── dto/           # Data Transfer Objects  
+│   ├── controller/      # Servlets for handling requests                  
+│── webapp/
+│   ├── 
+│   ├── 
+```
+
+---
+
+## 📝 API Endpoints
+
+| Endpoint      | Method | Description          |
+|--------------|--------|----------------------|
+| `/login`     | POST   | User login          |
+| `/register`  | POST   | New user signup     |
+| `/checkbalance` | POST  | Fetch account balance |
+| `/transfer`  | POST   | Transfer money      |
+
+---
+
+## 🤝 Contribution
+
+1. **Fork** the repo  
+2. **Create a feature branch**: `git checkout -b feature-name`  
+3. **Commit changes**: `git commit -m "Added new feature"`  
+4. **Push** to GitHub: `git push origin feature-name`  
+5. **Open a Pull Request**  
+
+---
+
+## 📧 Contact
+📩 Email: your-mailmeasradha@gmail.com  
+🔗 LinkedIn: [Profile](https://linkedin.com/in/bhaskarradha13/)  
+
+---
+
+
