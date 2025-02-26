@@ -61,16 +61,15 @@
 ### 1. Clone the Repository
 ```sh
 git clone https://github.com/bhaskarradha123/my_bank.git
-cd banking-app
+cd my_bank
 ```
 
 ### 2. Set Up Database
-- Import `database.sql` into MySQL.  
-- Update `db.properties` with your database credentials.  
+- Update `db configuration in UserDao` with your database credentials.  
 
 ### 3. Run the Application
 - Deploy on a **Tomcat Server**.  
-- Access the app at `http://localhost:8080/banking-app`.  
+- Access the app at `http://localhost:8080/my_bank`.  
 
 ---
 
