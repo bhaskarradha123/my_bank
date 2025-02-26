@@ -60,7 +60,7 @@
 
 ### 1. Clone the Repository
 ```sh
-git clone https://github.com/yourusername/banking-app.git
+git clone https://github.com/bhaskarradha123/my_bank.git
 cd banking-app
 ```
 
