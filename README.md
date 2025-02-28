@@ -82,7 +82,14 @@ cd my_bank
 │   ├── dto/           # Data Transfer Objects  
 │   ├── controller/      # Servlets for handling requests                  
 │── webapp/
-│   ├── 
+│   ├── account.jsp
+│   ├── bankTransfer.jsp
+│   ├── checkBalannce.jsp
+│   ├── dashboard.jsp
+│   ├── delete.jsp
+│   ├── error400.jsp
+│   ├── error404.jsp
+│   ├── error405.jsp
 │   ├── 
 ```
 
