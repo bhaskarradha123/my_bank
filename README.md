@@ -90,7 +90,9 @@ cd my_bank
 │   ├── error400.jsp
 │   ├── error404.jsp
 │   ├── error405.jsp
-│   ├── 
+│   ├── error500.jsp
+│   ├── forgetPassword.jsp
+
 ```
 
 ---
