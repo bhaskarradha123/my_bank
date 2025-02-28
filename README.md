@@ -79,7 +79,7 @@ cd my_bank
 /banking-app
 │── src/
 │   ├── dao/             # Database operations  
-│   ├── dto/           # Data Transfer Objects  
+│   ├── dto/             # Data Transfer Objects  
 │   ├── controller/      # Servlets for handling requests                  
 │── webapp/
 │   ├── account.jsp
