@@ -92,6 +92,16 @@ cd my_bank
 │   ├── error405.jsp
 │   ├── error500.jsp
 │   ├── forgetPassword.jsp
+│   ├── index.jsp
+│   ├── login.jsp
+│   ├── moneyTransfer.jsp
+│   ├── phoneTransfer.jsp
+│   ├── selfTransfer.jsp
+│   ├── signup.jsp
+│   ├── successRegistration.jsp
+│   ├── transactions.jsp
+│   ├── update.jsp
+
 
 ```
 
