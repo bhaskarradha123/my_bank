@@ -82,11 +82,16 @@ cd my_bank
 │   │    ├──BankAccountDao.java
 │   │    ├──TransactionsDao.java
 │   │    ├──UserDao.java
-│   ├── dto/                    # Data Transfer Objects
+│   ├── com.ty.dto/                    # Data Transfer Objects
 │   │    ├──BankAccount.java
 │   │    ├──TransactionDao.java
 │   │    ├──User.java 
-│   ├── controller/             # Servlets for handling requests           
+│   ├── com.ty.controller/             # Servlets for handling requests
+│   │    ├──BankTransfer.java
+│   │    ├──checkBalance.java
+│   │    ├──CrateAccount.java
+│   │    ├──DeleteServlet.java
+
 │── src/main/webapp/
 │   ├── account.jsp
 │   ├── bankTransfer.jsp
