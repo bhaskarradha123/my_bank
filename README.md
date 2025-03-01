@@ -91,6 +91,14 @@ cd my_bank
 │   │    ├──checkBalance.java
 │   │    ├──CrateAccount.java
 │   │    ├──DeleteServlet.java
+│   │    ├──DisplayTransactions.java
+│   │    ├──FetchBankDetailsServlet.java
+│   │    ├──ForgetPwd.java
+│   │    ├──ImageServlet.java
+│   │    ├──LoginServlet.java
+
+
+
 
 │── src/main/webapp/
 │   ├── account.jsp
