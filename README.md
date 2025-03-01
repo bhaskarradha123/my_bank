@@ -96,10 +96,13 @@ cd my_bank
 │   │    ├──ForgetPwd.java
 │   │    ├──ImageServlet.java
 │   │    ├──LoginServlet.java
-
-
-
-
+│   │    ├──LogoutServlet.java
+│   │    ├──RegisterServlet.java
+│   │    ├──SelfTransfer.java
+│   │    ├──TransferMoney.java
+│   │    ├──Update_Profile_Image.java
+│   │    ├──UpdatePassword.java
+│   │    ├──UpdateServlet.java
 │── src/main/webapp/
 │   ├── account.jsp
 │   ├── bankTransfer.jsp
