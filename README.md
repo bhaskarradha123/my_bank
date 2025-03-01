@@ -82,8 +82,11 @@ cd my_bank
 │   │    ├──BankAccountDao.java
 │   │    ├──TransactionsDao.java
 │   │    ├──UserDao.java
-│   ├── dto/             # Data Transfer Objects  
-│   ├── controller/      # Servlets for handling requests                
+│   ├── dto/                    # Data Transfer Objects
+│   │    ├──BankAccount.java
+│   │    ├──TransactionDao.java
+│   │    ├──User.java 
+│   ├── controller/             # Servlets for handling requests           
 │── src/main/webapp/
 │   ├── account.jsp
 │   ├── bankTransfer.jsp
