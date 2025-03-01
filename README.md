@@ -76,12 +76,15 @@ cd my_bank
 ## 📂 Project Structure
 
 ```
-/banking-app
-│── src/
-│   ├── dao/             # Database operations  
+/my_bank
+│── src/main/java
+│   ├── com.ty.dao/             # Database operations
+│   │    ├──BankAccountDao.java
+│   │    ├──TransactionsDao.java
+│   │    ├──UserDao.java
 │   ├── dto/             # Data Transfer Objects  
-│   ├── controller/      # Servlets for handling requests                  
-│── webapp/
+│   ├── controller/      # Servlets for handling requests                
+│── src/main/webapp/
 │   ├── account.jsp
 │   ├── bankTransfer.jsp
 │   ├── checkBalannce.jsp
