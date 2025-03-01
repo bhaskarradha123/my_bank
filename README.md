@@ -69,7 +69,7 @@ cd my_bank
 
 ### 3. Run the Application
 - Deploy on a **Tomcat Server**.  
-- Access the app at `http://localhost:8080/my_bank`.  
+- Access the app at `http://localhost:8080/my_bank/index.jsp`.  
 
 ---
 
