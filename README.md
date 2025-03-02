@@ -136,11 +136,13 @@ cd my_bank
 |--------------|--------|----------------------|
 | `/login`     | POST   | User login          |
 | `/save`  | POST   | New user signup     |
+| `/delete`  | POST   | User profile delete    |
 | `/update`  | POST   | User profile update    |
 | `/updatePwd`  | POST   | User Password update    |
 | `/updatepr`  | POST   | User profile image update    |
 | `/checkbalance` | POST  | Fetch account balance |
 | `/transfer`  | POST   | Transfer money      |
+| `/transactions`  | POST   | Display Transactions  |
 
 ---
 
