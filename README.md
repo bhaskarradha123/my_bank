@@ -135,7 +135,10 @@ cd my_bank
 | Endpoint      | Method | Description          |
 |--------------|--------|----------------------|
 | `/login`     | POST   | User login          |
-| `/register`  | POST   | New user signup     |
+| `/save`  | POST   | New user signup     |
+| `/update`  | POST   | User profile update    |
+| `/updatePwd`  | POST   | User Password update    |
+| `/updatepr`  | POST   | User profile image update    |
 | `/checkbalance` | POST  | Fetch account balance |
 | `/transfer`  | POST   | Transfer money      |
 
