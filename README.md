@@ -140,7 +140,9 @@ cd my_bank
 | `/update`  | POST   | User profile update    |
 | `/updatePwd`  | POST   | User Password update    |
 | `/updatepr`  | POST   | User profile image update    |
-| `/checkbalance` | POST  | Fetch account balance |
+| `/createAccount` | POST  | Account Create |
+| `/FetchBankDetailsServlet` | GET  |fetch Bank Account Details |
+| `/checkBalance` | POST  | Fetch account balance |
 | `/transfer`  | POST   | Transfer money      |
 | `/transactions`  | POST   | Display Transactions  |
 
