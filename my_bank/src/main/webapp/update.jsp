@@ -77,6 +77,12 @@
 </head>
 <body>
     <a href="dashboard.jsp" class="dashboard-button">DASHBOARD</a>
+
+<%
+	String email = (String) session.getAttribute("loginEmail");
+	User user = new UserDao().fetchProfileByEmail(email);
+	if (email != null && user != null) {
+	%>
     <div class="container">
         <div class="heading">UPDATE FORM</div>
         <form action="update" method="post">
@@ -94,5 +100,6 @@
             <input class="update-button" type="submit" value="EDIT">
         </form>
     </div>
+<%}%>
 </body>
 </html>
