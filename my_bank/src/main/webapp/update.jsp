@@ -92,9 +92,9 @@
     <div class="container">
         <div class="heading">UPDATE FORM</div>
         <form action="update" method="post">
-            <input class="input" type="email" name="email" required placeholder="Email" readonly>
-            <input class="input" type="text" name="firstName" required placeholder="First Name">
-            <input class="input" type="text" name="lastName" required placeholder="Last Name">
+            <input class="input" type="email" name="email"  value=<%= user.getEmail()%>  required placeholder="Email" readonly>
+            <input class="input" type="text" name="firstName" value=<%= user.getFirstname()% required placeholder="First Name">
+            <input class="input" type="text" name="lastName" value=<%= user.getLastname()% required placeholder="Last Name">
             <select class="input" name="gender" required>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
