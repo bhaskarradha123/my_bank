@@ -100,9 +100,9 @@
                 <option value="female">Female</option>
                 <option value="other">Other</option>
             </select>
-            <input class="input" type="text" name="address" required placeholder="Address">
-            <input class="input" type="number" name="age" required min="1" placeholder="Age">
-            <input class="input" type="tel" name="phone" required pattern="[0-9]{10}" placeholder="Phone Number">
+            <input class="input" type="text" name="address" value=<%= user.getAddress()%  required placeholder="Address">
+            <input class="input" type="number" name="age" value=<%= user.getAge()%  required min="1" placeholder="Age">
+            <input class="input" type="tel" name="phone" value=<%= user.getPhone()%  required pattern="[0-9]{10}" placeholder="Phone Number">
             <input class="update-button" type="submit" value="EDIT">
         </form>
     </div>
