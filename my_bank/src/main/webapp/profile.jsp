@@ -48,8 +48,8 @@
     }
     
     .image-div img {
-        width: 300px;
-        height: 120px;
+        width: 200px;
+        height: 220px;
          border-radius: 50%; 
         object-fit: cover;
         border: 3px solid #3a8dde;

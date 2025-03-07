@@ -146,19 +146,16 @@ footer {
 	border-radius: 10px;
 }
 
-
-
 @
-keyframes bounce {
-from { transform:translateY(0);
+keyframes bounce {from { transform:translateY(0);
 	
 }
 
 to {
 	transform: translateY(-10px);
 }
-}
 
+}
 @media ( max-width : 768px) {
 	.offcanvas {
 		width: 100%;
