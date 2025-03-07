@@ -34,6 +34,28 @@ public class BankAccountDao {
 
 	}
 
+	
+	
+	public void deleteBankByEmail(String email) throws Exception {
+		
+		PreparedStatement ps = con().prepareStatement("select * from bank where email=?");
+		ps.setString(1, email);
+		ResultSet rs = ps.executeQuery();
+		while (rs.next()) {
+			 
+			 new TransactionsDao().deleteTransactionsByAccNum(rs.getLong("accNum"));
+		}
+		
+		 ps = con().prepareStatement("delete  from bank where email=?");
+		ps.setString(1, email);
+		ps.executeUpdate();
+
+		
+
+	}
+	
+	
+	
 	public BankAccount fetchBalanceByAccNum(long accNum) throws Exception {
 
 		PreparedStatement ps = con().prepareStatement("select * from bank where accNum=? ");
