@@ -122,5 +122,14 @@ public class TransactionsDao {
 		else
 			return null;
 	}
+	
+	public void deleteTransactionsByAccNum(long accNum) throws SQLException, Exception {
+		
+		String query= "delete from transactions  where sender_account_number=?";
+		PreparedStatement pst = con().prepareStatement(query);
+		pst.setLong(1, accNum);
+		pst.executeUpdate();
+
+	}
 
 }
