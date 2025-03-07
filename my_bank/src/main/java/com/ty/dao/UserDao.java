@@ -141,6 +141,8 @@ public class UserDao {
 
 	public int deleteProfile(User udto) throws Exception {
 		PreparedStatement ps = con().prepareStatement("delete from user where email=? and pwd =?");
+	
+          new BankAccountDao().deleteBankByEmail(udto.getEmail());
 		ps.setString(2, udto.getPassword());
 		ps.setString(1, udto.getEmail());
 
