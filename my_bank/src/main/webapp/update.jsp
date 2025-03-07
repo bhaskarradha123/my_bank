@@ -92,17 +92,17 @@
     <div class="container">
         <div class="heading">UPDATE FORM</div>
         <form action="update" method="post">
-            <input class="input" type="email" name="email"  value=<%= user.getEmail()%>  required placeholder="Email" readonly>
-            <input class="input" type="text" name="firstName" value=<%= user.getFirstname()% required placeholder="First Name">
-            <input class="input" type="text" name="lastName" value=<%= user.getLastname()% required placeholder="Last Name">
+            <input class="input" type="email" name="email"  value="<%= user.getEmail()%>"  required  readonly>
+            <input class="input" type="text" name="firstName"  value="<%=user.getFirstname() %>"  required >
+            <input class="input" type="text" name="lastName"  value="<%=user.getLastname() %>" required >
             <select class="input" name="gender" required>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="other">Other</option>
             </select>
-            <input class="input" type="text" name="address" value=<%= user.getAddress()%  required placeholder="Address">
-            <input class="input" type="number" name="age" value=<%= user.getAge()%  required min="1" placeholder="Age">
-            <input class="input" type="tel" name="phone" value=<%= user.getPhone()%  required pattern="[0-9]{10}" placeholder="Phone Number">
+            <input class="input" type="text" name="address"  value="<%=user.getAddress() %>"  required >
+            <input class="input" type="number" name="age" value="<%=user.getAge() %>"  required min="1" >
+            <input class="input" type="tel" name="phone"  value="<%=user.getPhone() %>"  required pattern="[0-9]{10}" >
             <input class="update-button" type="submit" value="EDIT">
         </form>
     </div>
