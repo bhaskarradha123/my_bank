@@ -84,7 +84,7 @@ cd my_bank
 │   │    ├──UserDao.java
 │   ├── com.ty.dto/                    # Data Transfer Objects
 │   │    ├──BankAccount.java
-│   │    ├──TransactionDao.java
+│   │    ├──Transaction.java
 │   │    ├──User.java 
 │   ├── com.ty.controller/             # Servlets for handling requests
 │   │    ├──BankTransfer.java
